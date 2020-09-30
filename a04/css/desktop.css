@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+  width: 1000px;
+  margin: 20px auto 0 auto;
+  border: 8px solid black;
+  border-radius: 25px;
+  font: 100% Lucida Sans, Verdana;
+}
+
+div#logo { 
+    float: left;
+    margin: 10px;
+}
+div#image {
+    float: right;
+    margin: 10px;
+}
+div#text {
+    float: left;
+    margin: 10px;
+}
