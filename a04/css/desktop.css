@@ -4,11 +4,25 @@
 }
 
 body {
-  width: 1000px;
+  width: 1200px;
   margin: 20px auto 0 auto;
-  border: 8px solid black;
-  border-radius: 25px;
   font: 100% Lucida Sans, Verdana;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #006600;
+}
+li {
+  float: left;
+    padding: 10px;
+}
+li a {
+  color: white;
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
 }
 
 div#logo { 
