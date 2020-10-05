@@ -2,8 +2,9 @@
 <!-- feedback.html -->
   <body>
     <header>
-      <!--#include virtual="../common/logo.html"-->
-      <!--#include virtual="../common/mainmenu.html"-->
+        <div id = 'logo'>
+            <img src="../images/1.png" alt="Quick Eats">
+        </div>
     </header>
     <main>
       <nav id="subMenu">
@@ -12,12 +13,18 @@
         </ul>
       </nav>
       <article id="textRight">
-        <h3>Contact Us: Feedback Form</h3>
-        <p>Coming soon ... a general feedback form that will allow you
-        to contact us with any information that you may wish to send to
-        us: comments on our web site, your experience in doing business
-        with us, suggestions for new products, and so on. We want to hear
-        from you!</p>
+        <div id="text">
+            <h2>Let Us Know What You Think!</h2>
+            <h3>Contact Us: Feedback Form</h3>
+            <p>A general feedback form that will allow you to contact us with any information that you may wish to send to us: comments on our web site, your experience in doing business with us, suggestions for new products, and so on. We want to hear from you!</p>
+            Are you a customer, driver, or vendor?: <br><input name = "type"><br>
+            Name: <br><input name = "name"><br>
+            Phone Number: <br><input name = "number"><br>
+            Email Address: <br><input name = "email"><br>
+            Feedback: <br><input name = "feedback"><br><br>
+
+            <input class = "button round" type = "button" value = "Submit Feedback">
+        </div>
       </article>
     </main>
     <footer>
