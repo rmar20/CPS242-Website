@@ -1,6 +1,25 @@
   <!--#include virtual="../common/document_head.html"-->
   <!-- expert.html -->
-  <body>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function logExpertForm(){
+            var name = $("#name").val();
+            var type = $("#type").val();
+            var price = $("#price").val();
+            var feedback = $("#feedback").val();
+            console.log(name);
+            console.log(type);
+            console.log(price);
+            console.log(feedback);
+            var err = false;
+            var msg = "";
+            if(msg == ""){
+                msg = "Our experts will get back to you soon!"
+            }
+            $("#msg").html(msg);
+        }
+    </script>  
+<body>
     <header>
         <div id = 'logo'>
             <img src="../images/1.png" alt="Quick Eats">
@@ -24,10 +43,15 @@
         below for submitting such questions and then do our best to answer them.</p>
         <div id="text">
             <h4>Question Form</h4>
-            Restuarant Name (if you know where you want to eat): <br><input name = "name"><br>
-            Type of Cuisine (if you know what kind of food you want to eat): <br><input name = "type"><br>
-            Price Range ($-$$$): <br><input name = "price"><br>
-            Questions: <br><input name = "feedback"><br><br>
+              Restaurant Name (if you know where you want to eat): <br><input name = "name" id = "name" ><br>
+            Type of Cuisine (if you know what kind of food you want to eat): <br><input name = "type" id = "type"><br>
+            Price Range ($-$$$): <br>
+            <select id="price" tabindex="3">
+                <option value="0">$</option>
+                <option value="1">$$</option>
+                <option value="2">$$$</option> 
+                <option value="0">No preference</option></select><br>
+            Additional Questions: <br><input name = "feedback" id = "feedback"><br><br>
 
             <input class = "button round" type = "button" value = "Submit Feedback">
         </div>
