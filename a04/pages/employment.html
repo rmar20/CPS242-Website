@@ -6,6 +6,48 @@
         <title>Quick Eats</title>
         <link rel = "stylesheet" href = ../css/desktop.css>
     </head>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function validateEmploymentForm(){
+            var name = $("#name").val();
+            var address = $("#address").val();
+            var license = $("#license").val();
+            var phone = $("#phone").val();
+            var email = $("#email").val();
+            console.log(name);
+            console.log(address);
+            console.log(license);
+            console.log(phone);
+            console.log(email);
+            var err = false;
+            var msg = "";
+            if(name.length > 30 || name.length == 0){
+                err = true;
+                msg = "invalid name:  too long or short"
+            }
+            if(address.length > 30 || address.length == 0){
+                err = true;
+                msg = msg + " | invalid address:  too long or short"
+            }
+            if(license.length > 10 || license.length == 0){
+                err = true;
+                msg = msg + " | invalid name:  too long or short"
+            }
+            if(phone.length > 13 || phone.length < 10){
+                err = true;
+                msg = msg + " | invalid phone:  too long or short"
+            }
+            if(email.length > 30 || email.length == 0){
+                err = true;
+                msg = msg + " | invalid email:  too long or short"
+            }
+            if(msg == ""){
+                msg = "Thank you for your application!"
+            }
+            $("#msg").html(msg);
+            
+        }
+    </script>
   <body>
     <header>
         <div id = 'logo'>
@@ -24,12 +66,14 @@
         </div>
         <div id="text">
             <h2><br><br>Apply to be a Quick Eats Driver!</h2><br>
-            Full Legal Name: <br><input name = "name"><br>
-            Address: <br><input name = "address"><br>
-            Drivers' License Number: <br><input name = "license"><br>
-            Phone Number: <br><input name = "phone" ><br>
-            Email Address: <br><input name = "email"><br>
-            <br><input class = "button round" type = "button" value = "Submit Application">
+            Full Legal Name: <br><input name = "name" id = "name"><br>
+            Address: <br><input name = "address" id = "address"><br>
+            Drivers' License Number: <br><input name = "license" id = "license"><br>
+            Phone Number: <br><input name = "phone" id = "phone"><br>
+            Email Address: <br><input name = "email" id = "email"><br>
+            <br><input class = "button round" type = "button" value = "Submit Application" onclick = "validateEmploymentForm()">
+            <div id = "msg"></div>
+            
         </div>
         <div id="image">
             <img src="../images/2.png" alt="Delivery" width="496" height="368">
