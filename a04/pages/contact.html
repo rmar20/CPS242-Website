@@ -6,6 +6,43 @@
         <title>Quick Eats</title>
         <link rel = "stylesheet" href = ../css/desktop.css>
     </head>
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function validateContactForm(){
+            var type = $("#type").val();
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var email = $("#email").val();
+            var feedback = $("#feedback").val();
+            console.log(type);
+            console.log(name);
+            console.log(phone);
+            console.log(email);
+            console.log(feedback);
+            var err = false;
+            var msg = "";
+            if(name.length > 30 || name.length == 0){
+                err = true;
+                msg = "invalid name:  too long or short"
+            }
+            if(phone.length > 13 || phone.length < 10){
+                err = true;
+                msg = msg + " | invalid phone:  too long or short"
+            }
+            if(email.length > 30 || email.length == 0){
+                err = true;
+                msg = msg + " | invalid email:  too long or short"
+            }
+            if(feedback.length < 2){
+                err = true;
+                msg = msg + " | invalid email:  too long or short"
+            }
+            if(msg == ""){
+                msg = "Thank you for your feeback!"
+            }
+            $("#msg").html(msg);
+        }
+    </script
   <body>
     <header>
         <div id = 'logo'>
@@ -25,11 +62,15 @@
         <div id="text">
             <h2><br><br>Let Us Know What You Think!</h2><br>
             <h4>Feedback Form</h4>
-            Are you a customer, driver, or vendor?: <br><input name = "type"><br>
-            Name: <br><input name = "name"><br>
-            Phone Number: <br><input name = "number"><br>
-            Email Address: <br><input name = "email"><br>
-            Feedback: <br><input name = "feedback"><br><br>
+            Are you a customer, driver, or vendor?: <br>
+                <select type = "type" id = "type" tabindex="2">
+                <option value="0">customer</option>
+                <option value="1">driver</option>
+                <option value="2">vendor</option> </select><br>
+            Name: <br><input name = "name" id = "name"><br>
+            Phone Number: <br><input name = "number" id = "number"><br>
+            Email Address: <br><input name = "email" id = "email"><br>
+            Feedback: <br><input name = "feedback" id = "feedback"><br><br>
 
             <input class = "button round" type = "button" value = "Submit Feedback">
             
