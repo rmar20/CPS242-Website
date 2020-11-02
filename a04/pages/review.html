@@ -5,6 +5,36 @@
         <meta charset="utf-8">
         <title>Quick Eats</title>
         <link rel = "stylesheet" href = ../css/desktop.css>
+        <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script>
+            function validateReviewForm(){
+                var rname = $("#rname").val();
+                var rating = $("#rating").val();
+                var comments = $("#comments").val();
+                console.log(rname);
+                console.log(rating);
+                console.log(comments);
+                
+                var err = false;
+                var msg = "";
+                if(rname.length > 25 || rname.length == 0){
+                    err = true;
+                    msg = "invalid restaraunt name:  too long or short"
+                }
+                if(rating > 5 || rating < 1){
+                    err = true;
+                    msg = msg + " | invalid rating:  value must be between 1 and 5"
+                }
+                if(comments.length > 1000){
+                    err = true;
+                    msg = msg + " | invalid comments:  too long or short"
+                }
+                if(msg == ""){
+                    msg = "Thank you for your review!"
+                }
+                $("#msg").html(msg);
+        }
+        </script>
     </head>
   <body>
     <header>
@@ -30,12 +60,13 @@
             will add 2 points, and every photo will add 5 points. Use these points 
             to save money on future purchases with Quick Eats! </p>
             <h4>Order Review Form</h4>
-            Restuarant Name: <br><input name = "type"><br>
-            Rating (1-5): <br><input name = "rating"><br>
-            Review: <br><input name = "review"><br>
-            Photo: <br><input name = "photo"><br><br>
+            Restuarant Name: <br><input name = "type" id = "rname"><br>
+            Rating (1-5): <br><input name = "rating" id = "rating"><br>
+            Comments: <br><input name = "review" id = "comments"><br>
+            Photo: <br><input name = "photo" id = "photo"><br><br>
 
-            <input class = "button round" type = "button" value = "Submit Feedback">
+            <input class = "button round" type = "button" value = "Submit Feedback" onclick = "validateReviewForm()">
+            <div id = "msg"></div>
         </div>
         <div id = "credits">
             <h5>Quick Eats &copy; 2020 Ryan Mar and Shara Shrestha</h5>
