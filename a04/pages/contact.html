@@ -14,28 +14,28 @@
             var phone = $("#phone").val();
             var email = $("#email").val();
             var feedback = $("#feedback").val();
-            console.log(type);
-            console.log(name);
-            console.log(phone);
-            console.log(email);
-            console.log(feedback);
+            var rxName = /([a-zA-Z]{1,30})\w/;
+            var rxEmail = /.+@.+/;
+            var rxPhone = /(\d{0,3})((.| |-)?)(\(?\d{3}\)?)((.| |-)?)(\d{3})((.| |-)?)(\d{4})/;
+            var rxFeedback = /.{10,1000}/
+
             var err = false;
             var msg = "";
-            if(name.length > 30 || name.length == 0){
+            if(!rxName.test(name)){
                 err = true;
-                msg = "invalid name:  too long or short"
+                msg = "invalid name"
             }
-            if(phone.length > 13 || phone.length < 10){
+            if(!rxPhone.test(phone)){
                 err = true;
-                msg = msg + " | invalid phone:  too long or short"
+                msg = msg + " | invalid phone"
             }
-            if(email.length > 30 || email.length == 0){
+            if(!rxEmail.test(email)){
                 err = true;
-                msg = msg + " | invalid email:  too long or short"
+                msg = msg + " | invalid email"
             }
-            if(feedback.length < 2){
+            if(!rxFeedback.test(feedback)){
                 err = true;
-                msg = msg + " | invalid email:  too long or short"
+                msg = msg + " | invalid feedback"
             }
             if(msg == ""){
                 msg = "Thank you for your feeback!"

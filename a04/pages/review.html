@@ -11,13 +11,12 @@
                 var rname = $("#rname").val();
                 var rating = $("#rating").val();
                 var comments = $("#comments").val();
-                console.log(rname);
-                console.log(rating);
-                console.log(comments);
+                var rxRName = /.{1,25}/
+                var rxComments = /.{1,1000}/
                 
                 var err = false;
                 var msg = "";
-                if(rname.length > 25 || rname.length == 0){
+                if(!rxRName.test(rname)){
                     err = true;
                     msg = "invalid restaraunt name:  too long or short"
                 }
@@ -25,7 +24,7 @@
                     err = true;
                     msg = msg + " | invalid rating:  value must be between 1 and 5"
                 }
-                if(comments.length > 1000){
+                if(!rxComments.test(comments)){
                     err = true;
                     msg = msg + " | invalid comments:  too long or short"
                 }
