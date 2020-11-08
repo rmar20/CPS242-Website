@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- about.html for asgn 04-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Quick Eats</title>
+        <link rel = "stylesheet" href = ../css/desktop.css>
+        <script src = "https://code.jquery.com/jquery-3.5.1.min.js" crossorigin = "anonymous"> </script>
+        <script>
+            function toggle(divName) {
+                var x = document.getElementById(divName);
+                if (x.style.display === "block")    x.style.display = "none";
+                else    x.style.display = "block";
+            }
+            function validateMainInfo() {
+                var rxFName = /([a-zA-Z]{1,15})\w/;
+                var rxLName = /([a-zA-Z]{1,15})\w/;
+                var rxEmail = /.+@.+/;
+                var rxPhone = /(\d{0,3})((.| |-)?)(\(?\d{3}\)?)((.| |-)?)(\d{3})((.| |-)?)(\d{4})/;
+                var rxAddress1 = /.{1,30}/;
+                var rxAddress2and3  = /.{0,30}/;
+
+                if(!rxFName.test($("#fname").val())){
+                    $("#message").append("Invalid First Name<br>");
+                }
+                else if (!rxFName.test($("#lname").val())){
+                    $("#message").append("Invalid Last Name<br>");
+                }
+                else if(!rxEmail.test($("#email").val())){
+                    $("#message").append("Invalid Email<br>");
+                }
+                else if(!rxPhone.test($("#phone").val())){
+                    $("#message").append("Invalid Phone<br>");
+                }
+                else if(!(rxAddress1.test($("#address1").val()))){
+                    $("#message").append("Invalid Address<br>");
+
+                }
+                else if(!(rxAddress2and3.test($("#address2").val()) || rxAddress2and3.test($("#address3").val()))){
+                    $("#message").append("Invalid Address<br>");
+                }
+                else{
+                    $("#message").html("");
+                    toggle('mainInfo');
+                    toggle('credentials');
+                }
+                
+            }
+            function validateNewAccount() {
+                var rxUsername = /.{1,15}/;
+                var rxPassword = /.{6,25}/;
+                un = $("#username").val();
+                pw = $("#password").val();
+                pw2 = $("#password2").val();
+                if(!rxUsername.test(un)){
+                   $("#message").append("Invalid Username<br>");
+                }
+                else if(!rxPassword.test(pw)){
+                    $("#message").append("Invalid Password<br>");
+                }
+                else if(pw!=pw2){
+                    $("#message").append("Passwords don't match, please retype<br>");
+                }
+                else{
+                    toggle('credentials');
+                    $("#message").html("<br>Thank you for creating an account!");
+                }
+            }
+        </script>
+    </head>
+  <body>
+    <header>
+        <div id = 'logo'>
+            <img src="../images/1.png" alt="Quick Eats">
+        </div>
+    </header>
+    <main>
+		<div id = "menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="estore.html">Order</a></li>
+                <li><a href="employment.html">Apply to Drive</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul> 
+        </div>
+        <div id="mainInfo" style = "display:block">
+            First Name:  <input name = "fname" id = "fname"><br>
+            Last Name:  <input name = "lname" id = "lname"><br>
+            Email: <input name = "email" id = "email"><br>
+            Phone: <input name = "phone" id = "phone"><br>
+            Address Line 1:  <input name = "address1" id = "address1"><br>
+            Address Line 2:  <input name = "address2" id = "address2"><br>
+            Address Line 3:  <input name = "address3" id = "address3"><br>
+            <input class = "button round" type = "button" value = "Continue" onclick = "validateMainInfo()">
+        </div>
+        <div id = "credentials" style="display:none">
+            Username:  <input name = "username" id = "username">
+            Password: <input name = "password" id = "password">
+            Re-Type Password: <input name = "password2" id = "password2">
+            <input class = "button round" type = "button" value = "Create Account" onclick = "validateNewAccount()">
+        </div>
+        <div id = "message">
+        </div>
+        
+    </main>
+  </body>
+</html>
