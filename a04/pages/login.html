@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- about.html for asgn 04-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Quick Eats</title>
+        <link rel = "stylesheet" href = ../css/desktop.css>
+        <script src = "https://code.jquery.com/jquery-3.5.1.min.js" crossorigin = "anonymous"> </script>
+        <script>
+            function toggle(divName) {
+                var x = document.getElementById(divName);
+                if (x.style.display === "block")    x.style.display = "none";
+                else    x.style.display = "block";
+            }
+            function validateLoginInfo() {
+                var rxUsername = /.{1,15}/;
+                var rxPassword = /.{6,25}/;
+                un = $("#username").val();
+                pw = $("#password").val();
+
+                if(!rxUsername.test($(un).val())){
+                    $("#message").append("Invalid Username<br>");
+                }
+                else if (!rxPassword.test($(pw).val())){
+                    $("#message").append("Invalid Password<br>");
+                }
+               else{
+                    toggle('credentials');
+                    $("#message").html("<br> Login successful. Welcome!");
+                }
+            }
+        </script>
+    </head>
+  <body>
+    <header>
+        <div id = 'logo'>
+            <img src="../images/1.png" alt="Quick Eats">
+        </div>
+    </header>
+    <main>
+		<div id = "menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="estore.html">Order</a></li>
+                <li><a href="employment.html">Apply to Drive</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul> 
+        </div>
+        <div id="loginInfo" style = "display:block">
+            Username:  <input username = "username" id = "username" required><br>
+            Password:  <input password = "password" id = "password" required><br>
+            <input class = "button round" type = "button" value = "Login" onclick = "validateLoginInfo()">
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <div id = "message">
+        </div>
+        
+    </main>
+  </body>
+</html>
