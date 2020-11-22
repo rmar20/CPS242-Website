@@ -7,7 +7,7 @@ $messageToBusiness =
     "$_POST[feedback]\r\n";
 
 $headerToBusiness = "From: $_POST[email]\r\n";
-mail("autoreply@quickeats.com", "Feedback Submission",
+mail("feedback@quickeats.com", "Feedback Submission",
     $messageToBusiness, $headerToBusiness);
 
 //Construct e-mail confirmation message for the client,
@@ -23,12 +23,8 @@ $messageToClient =
     "The Quick Eats Team\r\n".
     "------------------------\r\n";
 
-if (isset($_POST['reply'])) $messageToClient.=
-    "P.S. We will contact you shortly with more information.";
-
-//Sends e-mail confirmation message to the client
-$headerToClient = "From: webbook2e@cs.smu.ca\r\n";
-mail($_POST['email'], "Re: $_POST[subject]",
+$headerToClient = "From: autoreply@quickeats.com\r\n";
+mail($_POST['email'], "Re: Feedback",
     $messageToClient, $headerToClient);
 
 //Transforms confirmation message to HTML 5 format for
